@@ -1,0 +1,27 @@
+{
+    "name" : "PayBuddy Inc.",
+    "network" : "testnet",
+    "address" : "GAFERAGCNYEN7ZOQOWMMPQ2GYTAVXF2QJ3DIKVTACW3DXTIGHYQ75S4F",
+    "auth" : [
+        {
+            "username" : "signer1",
+            "password" : "signer1",
+            "secret" : "SDLVL4ER324R4FHZKC67AJQZYH4KZIXD5SB3JNHYJYILSJEQQEOB6T2N"
+        },
+        {
+            "username" : "signer2",
+            "password" : "signer2",
+            "secret" : "SDG2NYEEYBJTM3GN77TXPD2YWYTZ5LMACPSMAFGYGC42GDP5F6RNKDCB"
+        },
+        {
+            "username" : "signer3",
+            "password" : "signer3",
+            "secret" : "SAGSPYSTOOZ2ENMF2GE44IGLAMCRK3AJHPBC6WWYQHGBXHDM6EZAIHCP"
+        },
+        {
+            "username" : "signer4",
+            "password" : "signer4",
+            "secret" : "SAA6EKK4GDU4QSBZEI3KIGE2P4EXWZ5YQ46L5QN7AKGK4XUZEH76ZB7I"
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{{account.username}}'s payment request</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="static/css/style.css" /><link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body>
+<div class="iphone">
+  <header class="header">
+    <h1>Payment Request</h1>
+  </header>
+  <form  class="form" method="post">
+    <div>
+
+      <div class="card">
+          <!-- <img src="{{qrcode(str)}}"> </div> -->
+          <p style="text-align:center;"><b>{{account.username}}</b> is requesting <b>${{payment.usd_amount}}</b></p>  
+           </div>
+<br>
+    <fieldset>
+      <legend>Supported Stellar Assets:</legend>
+      {% for i in payment.accepted %}
+      <div class="form__radios">
+        <div class="form__radio">
+          <label for="{{i.ticker}}">
+            <img src="{{i.icon}}" style="height: 30px; width: 30px;">
+            <b>{{i.ticker}}</b><small>{{i.note}}</small></label>
+          <input checked id="{{i.ticker}}" name="payment-method" type="radio" value="{{i.ticker}}"/>
+        </div>
+
+       {% endfor %}
+    </fieldset>
+
+</div>
+
+    <div>
+      <h2>Charges</h2>
+      <table>
+        <tbody>
+          {% for h in chargelis %}
+        <tr>
+          <td>{{h["charge"]}}</td>
+          <td align="right"><b>${{h["amount"]}}</b></td>
+        </tr>
+      </tbody>
+          {% endfor %}
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td align="right">${{payment.usd_amount}}</td>
+        </tr>
+      </tfoot>
+      </table>
+      <br>
+      <div>
+        <button class="button button--full" type="submit" value="submit" style="text-align: center;">Submit</button>
+      </div>
+      </form>
+    </div>
+     
+ 
+</body>
+</html>

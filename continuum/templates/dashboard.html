@@ -1,0 +1,15 @@
+<button onclick="window.open('http://127.0.0.1:5000/create_asset/continuum:{{apikey}}','_blank')">Click me to create an asset</button>
+<button onclick="window.open('http://127.0.0.1:5000/create_created_account/continuum:{{apikey}}','_blank')">Click me to create a Custodial Account</button>
+
+<p>API key: "continuum:{{apikey}}"</p>
+<p>email: {{email}}</p>
+<p>public authentication: {{public_auth}}</p>
+<p>secret authentication: {{secret_auth}}</p>
+<p>My Assets:</p>
+{% for i in a %}
+  {{ i.ticker }} public code: {{i.public_code}} <br>
+{% endfor %}
+<p>My Created accounts:</p>
+{% for i in b %}
+  {{ i.email }} secret (transactional) code: {{i.secret}} in asset: {{i.asset.ticker}} <br>
+{% endfor %}

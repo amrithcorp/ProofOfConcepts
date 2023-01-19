@@ -1,0 +1,72 @@
+
+from stellar_sdk import Keypair
+import json
+import requests
+
+def get_user(username,password):
+    auth_file = open('signers.json',"r")
+    auth_js = json.load(auth_file)
+    for i in auth_js['auth']:
+        if i['username'] == username and i['password'] == password:
+            return i['secret']
+
+def resolve(public,data,signature):
+    k = Keypair.from_public_key(public)
+    data = data.encode('utf-8')
+    signature = bytes.fromhex(signature)
+    try:
+        k.verify(data,signature)
+        return True
+    except:
+        return False
+
+
+start = False
+cont = ""
+signed = ""
+signed_list = []
+while(True):
+    message = "hello"
+    if start:
+        cont = input("continue? (Y/N): ")
+    else:
+        cont = input("start? (Y/N): ")
+    if cont == "Y":
+        start = True
+        username = input("username: ")
+        password = input("password: ")
+        secret = get_user(username,password)
+        print(secret[0:10] + '...')
+        sign = input("sign message? (Y/N): ")
+        if sign == "Y":
+            keypair = Keypair.from_secret(secret)
+            byte_msg = bytes(message,'utf-8')
+            # print(byte_msg)
+            signed = keypair.sign(byte_msg)
+            # print(keypair.verify(byte_msg,signed))
+            signed = signed.hex()
+            signed_list.append({
+                "message" : message,
+                "signer" : keypair.public_key,
+                "signed" : signed
+            })
+
+    else:
+        break
+l = []
+signers = signers = requests.get('https://horizon-testnet.stellar.org/accounts/' + "GAFERAGCNYEN7ZOQOWMMPQ2GYTAVXF2QJ3DIKVTACW3DXTIGHYQ75S4F").json()['signers']
+
+for i in signed_list:
+    for j in signers:
+        if resolve(j['key'],i['message'],i['signed']):
+            l.append(j['key'])
+approve = len(l)
+total = len(signers)
+
+if approve >= total/2:
+    print("KYB check completed!")
+else:
+    print("KYB check failed... could not reach vote threshold")
+
+
+

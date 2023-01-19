@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>{{account.username}}'s payment request</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="static/css/style.css" /><link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body>
+<div class="iphone">
+  <header class="header">
+    <h1>Payment Request</h1>
+  </header>
+    <div>
+
+      <div class="card">
+          <!-- <img src="{{qrcode(str)}}"> </div> -->
+          <p style="text-align:center;"><b>{{account.username}}</b> is requesting <b>${{payment.usd_amount}}</b></p>
+          <p style="text-align:center;"><b>${{price}} = 1 {{payment.chosen_asset.ticker}}</b></p>
+
+           </div>
+<br>
+<div class="card">
+<p style="text-align:center;">Charge: ${{payment.usd_amount}}</p>
+<p style="text-align:center;">{{payment.chosen_asset.ticker}} amount: {{payment.asset_amount}}</p>
+</div>
+
+<p style="text-align:center;"><small>Expires: UTC {{payment.expires}}</small></p>
+<br><br><br><br><br><br><br><br><br><br>
+    <div style><a style="text-decoration:none;" href="{{url}}">
+        <button type="submit" value="Submit" class="button button--full" style="text-align: center;" >Confirm</button>
+      </a></div>
+    </div>
+     
+ 
+</body>
+</html>

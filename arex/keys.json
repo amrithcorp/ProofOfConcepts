@@ -1,0 +1,11 @@
+{
+    "bitcoincash_key":"--bch-key--",
+    "bitcoincash_addr":"--bch-addr--",
+    "stellar_lumen_key":"--stellar-key--",
+    "stellar_lumen_addr":"--stellar-addr--",
+    "bnb_key":"--bnb-key--",
+    "bnb_addr":"--bnb-addr--",
+    "bscan_key":"bscan_api_key",
+    "usdc_key":"--usdc-stellar-key--",
+    "usdc_addr":"--usdc-stellar-addr--"
+ }
